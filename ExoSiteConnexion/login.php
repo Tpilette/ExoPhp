@@ -1,32 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-</head>
-<body>
-    <?php
-    
-            if($_POST['login'] != " " && $_POST['password'] != " ")
-            {
-                $login = $_POST['login'];
-                $password = $_POST['password'];
-                
-                $passwordOk = $password == "123456" ? true : false;
-              
-                if ($passwordOk) {
-                    echo "Bienvenue";
-                } 
-                else 
-                {
-                    echo "Login ou password incorrect";
-                }
-            }
-            else
-            {
-                header("Location: unauthorize.php");
-            }
-    
-    ?>
-</body>
-</html>
+<?php 
+if(!empty($_POST)){
+    if(!empty($_POST['Login']) && !empty($_POST['Password']))
+    {
+        // check login/pass
+    }
+    else
+    {
+      header('Location: unauthorize.php');
+    }
+               
+
+ob_start();
+
+?>
+
+    <form action="login.php" method="POST">
+       <div class="form-group">
+         <label for="login">login</label>
+         <input class="form-control" id="login" type="text" name="login">
+       </div>
+
+       <div class="form-group">
+         <label for="password">password</label>
+         <input id="password" class="form-control"  type="password" name="password">
+        </div>
+        
+        <button type="submit" class="btn btn-primary" >Submit</input>
+    </form>
